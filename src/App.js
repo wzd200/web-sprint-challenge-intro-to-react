@@ -2,7 +2,12 @@ import React, {useState, useEffect} from 'react';
 import Axios from 'axios'
 import './App.css';
 import Character from './components/Character'
+import styled from 'styled-components'
 // import constants from './constants'
+const StyledTitle = styled.div`
+  color: 'crimson';
+`
+
 
 const App = () => {
   // Try to think through what state you'll need for this app before starting. Then build out
@@ -35,7 +40,9 @@ const App = () => {
 
   return (
     <div className="App">
-      <h1 className="Header">Characters</h1>
+      <StyledTitle>
+        <h1 className="Header">Characters</h1>
+      </StyledTitle>
       {starWarsCharacters.map((ch) => {
         return <Character key={Math.random()} starWarsCharacters={starWarsCharacters}/>
       })}
