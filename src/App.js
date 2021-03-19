@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import Axios from 'axios'
 import './App.css';
 import Character from './components/Character'
@@ -18,20 +18,17 @@ const App = () => {
   // side effect in a component, you want to think about which state and/or props it should
   // sync up with, if any.
   useEffect (() => {
-    const fetchCharacterData1 = () => {
       Axios
       .get('https://swapi.dev/api/people/?format=json')
       .then(res => {
-        console.log(`this is working`, res)
+        // console.log(`this is working`, res)
         setStarWarsCharacters(res.data)
       })
       .catch(err => {
         console.log(`${err}`)
         console.log('U GOT AN ERR')
     })
-    }
-
-    fetchCharacterData1()
+    
 
   }, [])
   
@@ -44,7 +41,7 @@ const App = () => {
         <h1 className="Header">Characters</h1>
       </StyledTitle>
       {starWarsCharacters.map((ch) => {
-        return <Character key={Math.random()} starWarsCharacters={starWarsCharacters}/>
+        return <Character key={Math.random()} starWarsCharacters={starWarsCharacters} name={ch.name} height={ch.height}/>
       })}
 
     </div>
